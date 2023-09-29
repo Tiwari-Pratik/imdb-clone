@@ -6,6 +6,12 @@
   padding: 0.5em 1em;
 }
 
+.movielink:link,
+.movielink:visited,
+.movielink:active {
+  text-decoration: none;
+}
+
 .movie {
   background-color: #2b363b;
   padding: 0.5em;
@@ -16,6 +22,12 @@
   border: 1px solid white;
   border-radius: 15px;
   color: white;
+  cursor: pointer;
+  transition: transform 200ms ease-out;
+}
+
+.movie:hover {
+  transform: scale(1.05);
 }
 
 .poster {
@@ -63,4 +75,5 @@
   display: flex;
   justify-content: space-between;
   gap: 0.5em;
+  align-items: center;
 }

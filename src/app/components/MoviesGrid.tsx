@@ -2,8 +2,9 @@ import React from "react";
 import styles from "./MoviesGrid.module.css";
 import Image from "next/image";
 import ThumbsUpIcon from "./ThumbsUpIcon";
+import Link from "next/link";
 
-const getMovies: () => Promise<Result> = async () => {
+const getMovies = async () => {
   const res = await fetch(
     "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1/",
     {
@@ -21,35 +22,42 @@ const getMovies: () => Promise<Result> = async () => {
 const MoviesGrid = async () => {
   const moviesPlaying = await getMovies();
   console.log(moviesPlaying);
+
   return (
     <section className={styles.moviegrid}>
-      {moviesPlaying.results.map((movie: Movie) => {
+      {moviesPlaying?.results?.map((movie: Movie) => {
         return (
-          <div key={movie.id} className={styles.movie}>
-            <div className={styles.poster}>
-              <Image
-                alt="movie poster"
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                // width={200}
-                // height={200}
-                fill={true}
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.content}>
-              <div className={styles.data}>
-                <p>{movie.overview}</p>
+          <Link
+            className={styles.movielink}
+            key={movie.id.toString()}
+            href={`/${movie.id.toString()}`}
+          >
+            <div className={styles.movie}>
+              <div className={styles.poster}>
+                <Image
+                  alt="movie poster"
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  // width={200}
+                  // height={200}
+                  fill={true}
+                  className={styles.image}
+                />
               </div>
-              <p className={styles.title}>{movie.title}</p>
-              <div className={styles.metrics}>
-                <p>{movie.release_date}</p>
-                <p className={styles.rating}>
-                  <ThumbsUpIcon />
-                  {movie.vote_count}
-                </p>
+              <div className={styles.content}>
+                <div className={styles.data}>
+                  <p>{movie.overview}</p>
+                </div>
+                <p className={styles.title}>{movie.title}</p>
+                <div className={styles.metrics}>
+                  <p>{movie.release_date}</p>
+                  <div className={styles.rating}>
+                    <ThumbsUpIcon />
+                    <p>{movie.vote_count}</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
     </section>

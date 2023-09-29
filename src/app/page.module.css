@@ -4,3 +4,9 @@
   min-height: 100vh;
   width: 90%;
 }
+
+.now {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #F4F3F7;
+}
