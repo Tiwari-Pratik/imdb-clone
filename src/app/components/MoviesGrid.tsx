@@ -1,48 +1,28 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./MoviesGrid.module.css";
-import Image from "next/image";
 import ThumbsUpIcon from "./ThumbsUpIcon";
 import Link from "next/link";
+import MoviePoster from "./MoviePoster";
 
-const getMovies = async () => {
-  const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1/",
-    {
-      cache: "no-store",
-      headers: {
-        Authorization: `Bearer ${process.env.MOVIE_ACCESS_TOKEN}`,
-      },
-    }
-  );
-
-  const movies: Result = await res.json();
-
-  return movies;
-};
-const MoviesGrid = async () => {
-  const moviesPlaying = await getMovies();
-  console.log(moviesPlaying);
+interface MoviesGridProps {
+  movies: Promise<Result>;
+}
+const MoviesGrid = async ({ movies }: MoviesGridProps) => {
+  const moviesData = await movies;
 
   return (
     <section className={styles.moviegrid}>
-      {moviesPlaying?.results?.map((movie: Movie) => {
+      {moviesData?.results?.map((movie: Movie) => {
         return (
           <Link
             className={styles.movielink}
             key={movie.id.toString()}
-            href={`/${movie.id.toString()}`}
+            href={`/movie/${movie.id.toString()}`}
           >
             <div className={styles.movie}>
-              <div className={styles.poster}>
-                <Image
-                  alt="movie poster"
-                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                  // width={200}
-                  // height={200}
-                  fill={true}
-                  className={styles.image}
-                />
-              </div>
+              <Suspense fallback={<p>Loading Image...</p>}>
+                <MoviePoster posterPath={movie.poster_path} />
+              </Suspense>
               <div className={styles.content}>
                 <div className={styles.data}>
                   <p>{movie.overview}</p>

@@ -5,8 +5,8 @@ import styles from "./TopicBar.module.css";
 const TopicBar = () => {
   return (
     <div className={styles.topicbar}>
-      <Link className={styles.link} href="/trending">
-        Trending
+      <Link className={styles.link} href="/upcoming">
+        Up Coming
       </Link>
       <Link className={styles.link} href="/top-rated">
         Top Rated

@@ -1,7 +1,7 @@
-import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import ThumbsUpIcon from "../components/ThumbsUpIcon";
+import ThumbsUpIcon from "../../components/ThumbsUpIcon";
+import { getBase64Image } from "@/app/utils/Base64Image";
 
 const getMovie = async (id: string) => {
   const res = await fetch(
@@ -23,8 +23,12 @@ interface MovieProps {
     movieId: string;
   };
 }
+
 const MoviePage = async ({ params: { movieId } }: MovieProps) => {
   const movieData = await getMovie(movieId);
+  const base64ImageUrl = await getBase64Image(
+    `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
+  );
   return (
     <section className={styles.movieCard}>
       <div className={styles.posterContainer}>
@@ -35,6 +39,8 @@ const MoviePage = async ({ params: { movieId } }: MovieProps) => {
           // height={500}
           className={styles.poster}
           fill={true}
+          placeholder="blur"
+          blurDataURL={base64ImageUrl}
         />
       </div>
       <p className={styles.title}>{movieData.title}</p>

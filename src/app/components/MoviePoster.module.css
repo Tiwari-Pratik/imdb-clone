@@ -1,0 +1,13 @@
+.poster {
+  /* background-color: green; */
+  padding: 0;
+  width: 100%;
+  position: relative;
+  height: 170px;
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+.image {
+  /* object-fit: cover; */
+  object-position: center;
+}
