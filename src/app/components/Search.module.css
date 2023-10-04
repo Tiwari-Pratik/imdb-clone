@@ -1,0 +1,31 @@
+.searchContainer {
+  /* height: 3em; */
+  padding: 0.5em 1em;
+  /* background-color: red; */
+  margin-top: 2em;
+}
+
+.form {
+  width: 100%;
+  padding: 1em;
+  /* background-color: yellow; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.8em 1em;
+  border: 2px solid #afafaf;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.search::placeholder {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #a9b2ad;
+}

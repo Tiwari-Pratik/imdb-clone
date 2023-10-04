@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import Search from "./components/Search";
 import TopicBar from "./components/TopicBar";
 
 export const metadata = {
@@ -8,15 +9,19 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body>
         <Header />
         <TopicBar />
+        <Search />
         {children}
+        {modal}
       </body>
     </html>
   );

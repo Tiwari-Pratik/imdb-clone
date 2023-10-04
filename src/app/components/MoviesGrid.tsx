@@ -9,6 +9,7 @@ interface MoviesGridProps {
 }
 const MoviesGrid = async ({ movies }: MoviesGridProps) => {
   const moviesData = await movies;
+  // console.log(moviesData);
 
   return (
     <section className={styles.moviegrid}>
@@ -18,6 +19,7 @@ const MoviesGrid = async ({ movies }: MoviesGridProps) => {
             className={styles.movielink}
             key={movie.id.toString()}
             href={`/movie/${movie.id.toString()}`}
+            scroll={true}
           >
             <div className={styles.movie}>
               <Suspense fallback={<p>Loading Image...</p>}>

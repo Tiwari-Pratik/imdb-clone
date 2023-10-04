@@ -10,6 +10,7 @@ const getMovie = async (id: string) => {
       headers: {
         Authorization: `Bearer ${process.env.MOVIE_ACCESS_TOKEN}`,
       },
+      cache: "force-cache",
     }
   );
 

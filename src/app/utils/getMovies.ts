@@ -1,8 +1,10 @@
 export const getMovies = async (url: string) => {
   const res = await fetch(url, {
-    cache: "no-store",
     headers: {
       Authorization: `Bearer ${process.env.MOVIE_ACCESS_TOKEN}`,
+    },
+    next: {
+      revalidate: 14400,
     },
   });
 

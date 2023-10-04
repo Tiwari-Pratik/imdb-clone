@@ -1,3 +1,4 @@
+// "use client";
 import React from "react";
 import styles from "./MoviePoster.module.css";
 import Image from "next/image";
@@ -22,6 +23,7 @@ const MoviePoster = async ({ posterPath }: MoviePosterProps) => {
         className={styles.image}
         placeholder="blur"
         blurDataURL={base64ImageUrl}
+      // onError={(e) => console.log(e)}
       />
     </div>
   );
