@@ -10,7 +10,7 @@ interface MoviePosterProps {
 
 const MoviePoster = async ({ posterPath }: MoviePosterProps) => {
   const base64ImageUrl = await getBase64Image(
-    `https://image.tmdb.org/t/p/w500/${posterPath}`
+    `https://image.tmdb.org/t/p/w500/${posterPath}`,
   );
   return (
     <div className={styles.poster}>
@@ -23,6 +23,7 @@ const MoviePoster = async ({ posterPath }: MoviePosterProps) => {
         className={styles.image}
         placeholder="blur"
         blurDataURL={base64ImageUrl}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       // onError={(e) => console.log(e)}
       />
     </div>

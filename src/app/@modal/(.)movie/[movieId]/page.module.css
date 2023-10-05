@@ -1,5 +1,5 @@
 .movieCard {
-  width: 60%;
+  width: 55%;
   margin: 2em auto;
   background-color: #d7eade;
   border: 2px dashed blanchedalmond;
@@ -7,12 +7,13 @@
   overflow: hidden;
   padding: 1em 1em;
   color: #082d0f;
+  height: 90vh;
 }
 
 .posterContainer {
   width: 100%;
   position: relative;
-  height: 500px;
+  height: 300px;
   border-radius: 15px;
   overflow: hidden;
 }
@@ -53,7 +54,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1em;
   padding: 0.1em 2em;
-  justify-items: start;
+  justify-items: center;
   color: #5448c8;
   font-size: 1.2rem;
   font-weight: bolder;

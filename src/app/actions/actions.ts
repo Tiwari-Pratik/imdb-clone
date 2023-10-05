@@ -12,6 +12,6 @@ export const searchAction = async (formData: FormData) => {
     searchTerm: formData.get("searchTerm"),
   });
 
-  console.log(data.searchTerm);
+  // console.log(data.searchTerm);
   redirect(`/search?searchTerm=${data.searchTerm}`, RedirectType.replace);
 };
